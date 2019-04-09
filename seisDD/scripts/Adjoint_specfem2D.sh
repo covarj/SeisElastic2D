@@ -32,18 +32,18 @@ sed -e "s#^SIMULATION_TYPE.*#SIMULATION_TYPE = 3 #g"  $FILE > temp; mv temp $FIL
 sed -e "s#^SAVE_FORWARD.*#SAVE_FORWARD = .$SAVE_FORWARD. #g"  $FILE > temp; mv temp $FILE
 
 ##### forward simulation (data) #####
-./bin/xmeshfem2D
+./bin/xmeshfem2D > OUTPUT_FILES/output_adjoint.txt
 
 if [ $isource -eq 1 ] ; then  
     echo "mpirun -np $NPROC_SPECFEM ./bin/xspecfem2D"
 fi
-mpirun -np $NPROC_SPECFEM ./bin/xspecfem2D
+mpirun -np $NPROC_SPECFEM --oversubscribe ./bin/xspecfem2D >> OUTPUT_FILES/output_adjoint.txt
 
 #### mask source 
 # Source location
 export xs=$(awk -v "line=$isource" 'NR==line { print $1 }' DATA/sources.dat)
 export zs=$(awk -v "line=$isource" 'NR==line { print $2 }' DATA/sources.dat) 
-mpirun -np $NPROC_SPECFEM ./bin/mask_func.exe $xs $zs DATA/ OUTPUT_FILES/ 
+mpirun -np $NPROC_SPECFEM --oversubscribe ./bin/mask_func.exe $xs $zs DATA/ OUTPUT_FILES/ 
 
 # save
 if [ $isource -eq 1 ]; then  ## for size

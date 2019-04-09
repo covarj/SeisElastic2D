@@ -1,0 +1,19 @@
+6: srun: Job 82427 step creation temporarily disabled, retrying
+1: srun: Job 82427 step creation temporarily disabled, retrying
+7: srun: Job 82427 step creation temporarily disabled, retrying
+5: srun: Job 82427 step creation temporarily disabled, retrying
+2: srun: Job 82427 step creation temporarily disabled, retrying
+0: srun: Job 82427 step creation temporarily disabled, retrying
+4: srun: Job 82427 step creation temporarily disabled, retrying
+3: srun: Job 82427 step creation temporarily disabled, retrying
+6: srun: error: Unable to create step for job 82427: Job/step already completing or completed
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+7: srun: error: Unable to create step for job 82427: Job/step already completing or completed
+1: srun: error: Unable to create step for job 82427: Job/step already completing or completed
+2: srun: error: Unable to create step for job 82427: Job/step already completing or completed
+5: srun: error: Unable to create step for job 82427: Job/step already completing or completed
+4: srun: error: Unable to create step for job 82427: Job/step already completing or completed
+0: srun: error: Unable to create step for job 82427: Job/step already completing or completed
+3: srun: error: Unable to create step for job 82427: Job/step already completing or completed
+0: slurmstepd: error: *** STEP 82427.0 ON g1 CANCELLED AT 2019-04-05T13:41:11 ***
+slurmstepd: error: *** JOB 82427 ON g1 CANCELLED AT 2019-04-05T13:41:11 ***

@@ -1,12 +1,4 @@
 #!/bin/bash
-#SBATCH -J Iso
-#SBATCH -N 16
-#SBATCH -n 32
-#SBATCH -o slurm.log
-#SBATCH -t 03:00:00
-#SBATCH -A w18_trust
-
-#SBATCH --qos=interactive
 
 ulimit -s unlimited
 
@@ -71,7 +63,7 @@ echo
 echo "prepare data ..."
 velocity_dir=$target_velocity_dir
 if [ $system == 'slurm' ]; then
-    srun -n 32 -c $NPROC_SPECFEM -l -W 0 $SCRIPTS_DIR/prepare_data.sh $velocity_dir 2> ./job_info/error_target
+    srun -n $ntasks -c $NPROC_SPECFEM -l -W 0 $SCRIPTS_DIR/prepare_data.sh $velocity_dir 2> ./job_info/error_target
 elif [ $system == 'pbs' ]; then 
     pbsdsh -n $ntasks -c $NPROC_SPECFEM -l -W 0 $SCRIPTS_DIR/prepare_data.sh $velocity_dir 2> ./job_info/error_target
 fi
@@ -91,7 +83,7 @@ do
     velocity_dir=$DISK_DIR/m_current
     compute_adjoint=true
     if [ $system == 'slurm' ]; then
-        srun -n 32 -c $NPROC_SPECFEM -l -W 0 $SCRIPTS_DIR/Adjoint.sh $velocity_dir $compute_adjoint 2> ./job_info/error_current_$iter
+        srun -n $ntasks -c $NPROC_SPECFEM -l -W 0 $SCRIPTS_DIR/Adjoint.sh $velocity_dir $compute_adjoint 2> ./job_info/error_current_$iter
     elif [ $system == 'pbs' ]; then
         pbsdsh -n $ntasks -c $NPROC_SPECFEM -l -W 0 $SCRIPTS_DIR/Adjoint.sh $velocity_dir $compute_adjoint 2> ./job_info/error_current_$iter
     fi
@@ -162,7 +154,7 @@ do
         velocity_dir=$DISK_DIR/m_try
         compute_adjoint=false
         if [ $system == 'slurm' ]; then
-            srun -n 32 -c $NPROC_SPECFEM -l -W 0 $SCRIPTS_DIR/Adjoint.sh $velocity_dir $compute_adjoint 2> ./job_info/error_update_$iter
+            srun -n $ntasks -c $NPROC_SPECFEM -l -W 0 $SCRIPTS_DIR/Adjoint.sh $velocity_dir $compute_adjoint 2> ./job_info/error_update_$iter
         elif [ $system == 'pbs' ]; then
             pbsdsh -n $ntasks -c $NPROC_SPECFEM -l -W 0 $SCRIPTS_DIR/Adjoint.sh $velocity_dir $compute_adjoint 2> ./job_info/error_update_$iter
         fi

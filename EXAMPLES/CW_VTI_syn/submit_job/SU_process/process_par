@@ -1,0 +1,31 @@
+#!/bin/bash
+source ./parameter
+
+## following parameters only valid when SU_process is true 
+# system endian 
+system_endian='little_endian'
+xcomponent='Ux_file_single.su'
+## taper
+max_percentage=0.08
+## filter frequency
+filt_freq=3,5,8,10
+#filt_freq=3,5,18,20
+#filt_freq=3,5,28,30
+amps=0,1,1,0
+## gain
+## zero out
+#itmin1=1800
+#itmax1=4000
+#itmin1=1
+#itmax1=2000
+## sumute
+## window
+#tmin1=0
+#tmax1=1.6
+## kill trace
+## window
+#itmin=9000
+#itmax=10000
+#itmin0=1
+#itmax0=3000
+## normalize

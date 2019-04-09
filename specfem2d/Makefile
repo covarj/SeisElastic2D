@@ -59,7 +59,7 @@ FCCOMPILE_CHECK = ${FC} ${FCFLAGS} $(FLAGS_CHECK)
 
 MPIFCCOMPILE_CHECK = ${MPIFC} ${FCFLAGS} $(FLAGS_CHECK)
 
-CC = /usr/projects/hpcsoft/toss3/common/intel-clusterstudio/2017.4.056/compilers_and_libraries_2017/linux/bin/intel64/icc
+CC = gcc
 CFLAGS = -g -O2 $(CPPFLAGS) -I${SETUP}
 CPPFLAGS =  $(COND_MPI_CPPFLAGS)
 
@@ -83,7 +83,7 @@ FCLINK = $(MPIFCCOMPILE_CHECK)
 COND_MPI_CPPFLAGS = -DWITH_MPI
 #COND_MPI_CPPFLAGS =
 
-MPI_INCLUDES =  -I/usr/projects/hpcsoft/toss3/grizzly/openmpi/2.1.2-intel-17.0.4/include
+MPI_INCLUDES =  -I/global/software/openmpi/openmpi-2.0.4-intel/include
 
 # fortran compiler setting
 F90 = $(MPIFCCOMPILE_CHECK) -DUSE_MPI
@@ -95,11 +95,11 @@ F90 = $(MPIFCCOMPILE_CHECK) -DUSE_MPI
 ####
 #######################################
 
-USE_BUNDLED_SCOTCH = 0
+USE_BUNDLED_SCOTCH = 1
 
-SCOTCH_DIR = ./src/meshfem2D/scotch_6.0.4
-SCOTCH_INCDIR = ./src/meshfem2D/scotch_6.0.4/include
-SCOTCH_LIBDIR = ./src/meshfem2D/scotch_6.0.4/lib
+SCOTCH_DIR = ./src/meshfem2D/scotch
+SCOTCH_INCDIR = ./src/meshfem2D/scotch/include
+SCOTCH_LIBDIR = ./src/meshfem2D/scotch/lib
 
 SCOTCH_INC = -I${SCOTCH_INCDIR}
 SCOTCH_LIBS = -L${SCOTCH_LIBDIR} -lscotch -lscotcherr
@@ -139,7 +139,7 @@ CUDA_INC =  -I${SETUP}
 CUDA_LINK =  
 
 #NVCC = nvcc
-NVCC = /usr/projects/hpcsoft/toss3/common/intel-clusterstudio/2017.4.056/compilers_and_libraries_2017/linux/bin/intel64/icc
+NVCC = gcc
 
 # GPU architecture
 

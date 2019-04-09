@@ -1,0 +1,124 @@
+Submit job << CW_VTI_syn_01 >> in : /home/rjcova/SeisElastic2D/EXAMPLES/CW_VTI_syn/submit_job  
+Working directory: /home/rjcova/SeisElastic2D/EXAMPLES/CW_VTI_syn/submit_job/CW_VTI_syn_01/specfem/
+FINAL results in :  /home/rjcova/SeisElastic2D/EXAMPLES/CW_VTI_syn/submit_job/RESULTS/modeling/Scale0_WD_AD
+start time is :  13:42:18
+
+Re-Starting job ...
+Clean up result/DISK directories ...
+
+prepare data ...
+0: allocate 1 sources over 1 tasks
+0: iproc 0--1: nsrc_per_task=1
+0: iproc 0-0: nsrc_per_task=1
+0: iproc = 0, isource_start = 0, nsrc_this_task = 1, source: 1-1 
+0: SPECFEM2D Forward Modeling ...
+0: NPROC_SPECFEM=8
+0: data_tag=DATA_obs
+0: data_list=x,z
+0: velocity_dir=/home/rjcova/SeisElastic2D/EXAMPLES/CW_VTI_syn/model_true_bin
+0: SAVE_FORWARD=false
+0: WORKING_DIR=/home/rjcova/SeisElastic2D/EXAMPLES/CW_VTI_syn/submit_job/CW_VTI_syn_01/specfem/
+0: DISK_DIR=/home/rjcova/SeisElastic2D/EXAMPLES/CW_VTI_syn/submit_job/CW_VTI_syn_01/output/
+0: DATA_DIR=/ALL_DATA/CW_TTI_data/CW_TTI_obs_data_10Hz_exp_vti
+0: job=modeling
+0: try velocity directory: /home/rjcova/SeisElastic2D/EXAMPLES/CW_VTI_syn/model_true_bin
+0:  Reading the parameter file...
+0:  
+0:  Title of the simulation
+0:  exp5_iso_sn                                                                    
+0:                       
+0:  
+0:  
+0:  1 1 2.7d3 2.60d3 1.5d3 0 0 9999 9999 0 0 0 0 0 0
+0:  
+0:  Nb of solid, fluid or porous materials =            1
+0:  
+0:  Material #           1  isotropic
+0:  rho,cp,cs =    2700.00000000000        2600.00000000000     
+0:    1500.00000000000        9999.00000000000        9999.00000000000     
+0:  Material is solid
+0:  
+0:  
+0:  
+0:  Reading interface data from file DATA/interfaces.dat
+0:   to count the spectral elements
+0:  Reading            2  points for interface            1
+0:  Reading            2  points for interface            2
+0:  Total number of layers in z direction =            1
+0:  There are           60  spectral elements along Z in layer            1
+0:  
+0:  Total number of spectral elements along Z =           60
+0:  
+0:  
+0:  Nb of regions in the mesh =            1
+0:  
+0:  Region            1
+0:  IX from            1  to           30
+0:  IZ from            1  to           60
+0:  Material #            1  isotropic
+0:  Material is solid
+0:  vp =    2600.00000000000     
+0:  vs =    1500.00000000000     
+0:  rho =    2700.00000000000     
+0:  Poisson's ratio =   0.250554323725055     
+0:  QKappa =    9999.00000000000     
+0:  Qmu =    9999.00000000000     
+0:   -----
+0:  
+0:  Parameter file successfully read... 
+0:  
+0:  Source           1
+0:  Position xs, zs =    610.000000000000        170.000000000000     
+0:  Source type (1=force, 2=explosion):            2
+0:  Angle of the source if force =   0.000000000000000E+000
+0:  Multiplying factor =    10000000000.0000     
+0:  Frequency, delay =    10.0000000000000       0.000000000000000E+000
+0:  Time function type (1=Ricker, 2=First derivative, 3=Gaussian, 4=Dirac, 5=Heavis
+0:  ide, 8=Read from file, 9=burst):           1
+0:  Mxx of the source if moment tensor =    1.00000000000000     
+0:  Mzz of the source if moment tensor =    1.00000000000000     
+0:  Mxz of the source if moment tensor =   0.000000000000000E+000
+0:  
+0:  The mesh contains         1800  elements
+0:  
+0:  Control elements have            4  nodes
+0:  
+0:  Reading interface data from file DATA/interfaces.dat
+0:  
+0:  Min and max value of X in the grid =   0.000000000000000E+000
+0:    625.000000000000     
+0:  Min and max value of Z in the grid =   0.000000000000000E+000
+0:    1250.00000000000     
+0:  
+0:  
+0:  Saving the grid in Gnuplot format...
+0:  drawing horizontal lines of the grid
+0:  drawing vertical lines of the grid
+0:  Grid saved in Gnuplot format...
+0:  
+0:  nedges_coupled (acoustic/elastic)           0
+0:  nedges_coupled (acoustic/poroelastic)           0
+0:  nedges_coupled (poroelastic/elastic)           0
+0:  
+0:  Position (x,z) of the source =    610.000000000000        170.000000000000     
+0:  
+0:  
+0:  This will be a parallel simulation on            8  processor cores
+0:  
+0: mpirun -np 8 ./bin/xspecfem2D
+0: --------------------------------------------------------------------------
+0: There are not enough slots available in the system to satisfy the 8 slots
+0: that were requested by the application:
+0:   ./bin/xspecfem2D
+0: 
+0: Either request fewer slots for your application, or make more slots available
+0: for use.
+0: --------------------------------------------------------------------------
+0: Data preparation took 10 seconds
+
+ clean up local nodes (wait) ...... 
+
+finish time is : 13:42:28
+RUNTIME is :  0 hours ::  0 minutes  :: 10 seconds.
+
+******************well done*******************************

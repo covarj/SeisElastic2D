@@ -1,0 +1,16 @@
+1: --------------------------------------------------------------------------
+1: An ORTE daemon has unexpectedly failed after launch and before
+1: communicating back to mpirun. This could be caused by a number
+1: of factors, including an inability to create a connection back
+1: to mpirun due to a lack of common network interfaces and/or no
+1: route found between them. Please check network connectivity
+1: (including firewalls and network routing requirements).
+1: --------------------------------------------------------------------------
+0: --------------------------------------------------------------------------
+0: An ORTE daemon has unexpectedly failed after launch and before
+0: communicating back to mpirun. This could be caused by a number
+0: of factors, including an inability to create a connection back
+0: to mpirun due to a lack of common network interfaces and/or no
+0: route found between them. Please check network connectivity
+0: (including firewalls and network routing requirements).
+0: --------------------------------------------------------------------------

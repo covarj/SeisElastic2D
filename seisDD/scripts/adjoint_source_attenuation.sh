@@ -42,7 +42,7 @@ mkdir -p $INPUT_DIR/SEM_ATTENUATION
 #mkdir -p $INPUT_DIR/SEM_WD
 
 # adjoint source
-mpirun -np $NPROC_SPECFEM ./bin/misfit_adjoint_attenuation.exe $compute_adjoint $data_list $measurement_list $misfit_type_list $INPUT_DIR $VISCOELASTIC $measurement_attenuation
+mpirun -np $NPROC_SPECFEM ./bin/misfit_adjoint_attenuation.exe $compute_adjoint $data_list $measurement_list $misfit_type_list $INPUT_DIR $VISCOELASTIC $measurement_attenuation 
 
 ## copy and postprocessing of adjoint source
 arr=$(echo $data_list | tr "," "\n")

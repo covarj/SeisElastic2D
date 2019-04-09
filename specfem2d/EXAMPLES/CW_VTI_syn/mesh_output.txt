@@ -1,0 +1,75 @@
+ Reading the parameter file...
+ 
+ Title of the simulation
+ Tunnel                                                                         
+                      
+ 
+ 
+ 1 -1 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 
+ Nb of solid, fluid or porous materials =            1
+ 
+ Material #           1 
+  will be read in an external tomography file (TOMOGRAPHY_FILE in Par_file)
+ 
+ 
+ 
+ Reading interface data from file DATA/interfaces.dat
+  to count the spectral elements
+ Reading            2  points for interface            1
+ Reading            2  points for interface            2
+ Total number of layers in z direction =            1
+ There are           60  spectral elements along Z in layer            1
+ 
+ Total number of spectral elements along Z =           60
+ 
+ 
+ Nb of regions in the mesh =            1
+ 
+ Region            1
+ IX from            1  to           30
+ IZ from            1  to           60
+ Material #            1  isotropic
+ Material is fluid
+ vp =   -1.00000000000000     
+ vs =   0.000000000000000E+000
+ rho =   -1.00000000000000     
+ Poisson's ratio =   0.500000000000000     
+ QKappa =   -1.00000000000000     
+ Qmu =   -1.00000000000000     
+  -----
+ 
+ Parameter file successfully read... 
+ 
+ Source           1
+ Position xs, zs =    90.0000000000000        8.00000000000000     
+ Source type (1=force, 2=explosion):            2
+ Angle of the source if force =   0.000000000000000E+000
+ Multiplying factor =    10000000000.0000     
+ Frequency, delay =    30.0000000000000       0.000000000000000E+000
+ Time function type (1=Ricker, 2=First derivative, 3=Gaussian, 4=Dirac, 5=Heavis
+ ide, 8=Read from file, 9=burst):           1
+ Mxx of the source if moment tensor =    1.00000000000000     
+ Mzz of the source if moment tensor =    1.00000000000000     
+ Mxz of the source if moment tensor =   0.000000000000000E+000
+ 
+ The mesh contains         1800  elements
+ 
+ Control elements have            4  nodes
+ 
+ Reading interface data from file DATA/interfaces.dat
+ 
+ Min and max value of X in the grid =   0.000000000000000E+000
+   625.000000000000     
+ Min and max value of Z in the grid =   0.000000000000000E+000
+   1250.00000000000     
+ 
+ nedges_coupled (acoustic/elastic)           0
+ nedges_coupled (acoustic/poroelastic)           0
+ nedges_coupled (poroelastic/elastic)           0
+ 
+ Position (x,z) of the source =    90.0000000000000        8.00000000000000     
+ 
+ 
+ This will be a parallel simulation on           16  processor cores
+ 

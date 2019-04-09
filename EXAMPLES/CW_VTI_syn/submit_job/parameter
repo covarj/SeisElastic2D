@@ -1,0 +1,108 @@
+#!/bin/bash
+
+### job info
+Job_title='CW_VTI_syn_01'
+system='slurm'  # slurm, lsf or pbs
+queue='geo'     # serial,tiger(princeton) ...
+max_nproc_per_node=20 # max number of processors per node
+ntasks=8
+NPROC_SPECFEM=8
+WallTime=00:60:00
+compiler='ifort'
+GPU_MODE=false
+job='inversion' # modeling,kernel,inversion
+solver='specfem2D' # specfem2D, specfem3D
+ReStart=true   # true--Relaunch all files; false--Start from current status
+
+### paths
+package_path="$seisDD/seisDD"
+specfem_path="$seisDD/specfem2d"
+working_path="/home/rjcova/SeisElastic2D/EXAMPLES/CW_VTI_syn/submit_job"
+
+### observations 
+ExistDATA=false 
+# if exist provide path, otherwise ignore
+DATA_DIR="/home/rjcova/SeisElastic2D/EXAMPLES/CW_VTI_syn/submit_job/SYN_DATA"
+
+### model paths
+target_velocity_dir="/home/rjcova/SeisElastic2D/EXAMPLES/CW_VTI_syn/model_true_bin"
+initial_velocity_dir="/home/rjcova/SeisElastic2D/EXAMPLES/CW_VTI_syn/model_init_bin"
+
+### forward modeling
+# number of samples in data
+NSTEP=4000
+# sample rate
+deltat=2.0e-4 #s  
+f0=10
+# number of receivers
+NREC=162
+# number of sources
+NSRC=8
+# measurement (x,y,z,p)
+data_list='x,z'
+
+### kernel construction
+# measurement type (CC WD ET ED IP MT MA) 
+measurement_list=WD
+# misfit_type (AD, DD, AD+DD)
+misfit_type_list=AD
+cc_threshold=0.9
+initial_step_length=0.04
+min_step_length=0.00000001
+misfit_ratio_initial=0.00000000001
+misfit_ratio_previous=0.00000000001
+
+## inversion parameters
+#kernel_list='hti_thom_alpha_kernel,hti_thom_beta_kernel,hti_thom_epsilon_kernel,hti_thom_delta_kernel,hti_thom_rhop_kernel'
+#kernel_lst='hti_ec_c11_kernel,hti_ec_c13_kernel,hti_ec_c33_kernel,hti_ec_c55_kernel'
+#kernel_list='hti_thom_alpha_kernel,hti_thom_beta_kernel,hti_thom_epsilon_kernel,hti_thom_delta_kernel,hti_thom_rhop_kernel'
+#kernel_list='tti_ec_c11_kernel,tti_ec_c13_kernel,tti_ec_c15_kernel,tti_ec_c33_kernel,tti_ec_c35_kernel,tti_ec_c55_kernel'
+#kernel_list='tti_thom_alpha_kernel,tti_thom_beta_kernel,tti_thom_epsilon_kernel,tti_thom_delta_kernel,tti_thom_theta_kernel,tti_thom_rhop_kernel'
+kernel_list='hti_ec_c11_kernel,hti_ec_c13_kernel,hti_ec_c33_kernel,hti_ec_c55_kernel,hti_ec_rho_kernel'
+#kernel_list='tti_ecu_c13_kernel'
+#kernel_list='alpha_kernel,beta_kernel,rhop_kernel'
+precond=false
+precond_list='pdh_hti_ec_c11,pdh_hti_ec_c13,pdh_hti_ec_c33,pdh_hti_ec_c55,pdh_hti_ec_rho'
+#precond_list='pdh_tti_ecu_c11,pdh_tti_ecu_c13,pdh_tti_ecu_c33,pdh_tti_ecu_c55'
+#precond_list='pdh_tti_ecu_theta'
+#precond_list='pdh_tti_ecu_c13'
+#precond_list='pdh_hti_thom_alpha,pdh_hti_thom_beta,pdh_hti_thom_epsilon,pdh_hti_thom_delta,pdh_hti_thom_rhop'
+#precond_list='pdh_tti_thom_alpha,pdh_tti_thom_beta,pdh_tti_thom_epsilon,pdh_tti_thom_delta,pdh_tti_thom_theta,pdh_tti_thom_rhop'
+#precond_list='hessian2_kernel'
+#model_list='hti_thom_vp,hti_thom_vs,hti_thom_epsilon,hti_thom_delta,hti_thom_rhop'
+model_list='c11,c13,c33,c55,rho'
+#model_list='theta'
+#model_list='c13'
+# optimization(SD CG QN)
+opt_scheme=SD
+# iteration limit
+iter_start=1
+iter_end=5
+
+### preprocessing
+SU_process=false
+SU_process_path="../CW_VTI_syn/submit_job/SU_process"
+Wscale=0
+wavelet_path="$seisDD/seisDD/lib/WT_basis"
+
+### postprocessing
+# smooth
+smooth=true
+sigma_x=30
+sigma_z=60
+sigma_x_rate=0.0
+sigma_z_rate=0.0
+
+MASK_SOURCE=true
+source_radius=20
+MASK_STATION=true
+station_radius=20
+## Display details
+MASK_MODEL=false
+mask_z=500
+mask_zend=540
+## Display details
+DISPLAY_DETAILS=false 
+#
+VISCOELASTIC=false
+measurement_attenuation=AMP

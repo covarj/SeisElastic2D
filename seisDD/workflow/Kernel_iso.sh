@@ -61,7 +61,7 @@ echo
 echo "prepare data ..."
 velocity_dir=$target_velocity_dir
 if [ $system == 'slurm' ]; then
-    srun -n 32 -c $NPROC_SPECFEM -l -W 0 $SCRIPTS_DIR/prepare_data.sh $velocity_dir 2> ./job_info/error_target
+    srun -n $ntasks -l -W 0 $SCRIPTS_DIR/prepare_data.sh $velocity_dir 2> ./job_info/error_target
 elif [ $system == 'pbs' ]; then 
     pbsdsh -n $ntasks -c $NPROC_SPECFEM -l -W 0 $SCRIPTS_DIR/prepare_data.sh $velocity_dir 2> ./job_info/error_target
 fi
@@ -81,7 +81,7 @@ echo "Forward/Adjoint simulation for current model ...... "
 velocity_dir=$DISK_DIR/m_current
 compute_adjoint=true
 if [ $system == 'slurm' ]; then
-    srun -n 32 -c $NPROC_SPECFEM -l -W 0 $SCRIPTS_DIR/Adjoint.sh $velocity_dir $compute_adjoint 2> ./job_info/error_current
+    srun -n $ntasks -l -W 0 $SCRIPTS_DIR/Adjoint.sh $velocity_dir $compute_adjoint 2> ./job_info/error_current
 elif [ $system == 'pbs' ]; then
     pbsdsh -n $ntasks -c $NPROC_SPECFEM -l -W 0 $SCRIPTS_DIR/Adjoint.sh $velocity_dir $compute_adjoint 2> ./job_info/error_current
 fi

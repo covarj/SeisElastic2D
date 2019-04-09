@@ -1,0 +1,13 @@
+#!/bin/bash
+source ./parameter
+
+## following parameters only valid when SU_process is true 
+# system endian 
+system_endian='little_endian'
+## taper
+max_percentage=0.08
+## filter frequency
+filt_freq=2,4,5,7
+amps=0,1,1,0
+## gain
+scale=1

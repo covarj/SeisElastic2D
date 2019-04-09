@@ -73,14 +73,14 @@ sed -e "s#^SIMULATION_TYPE.*#SIMULATION_TYPE = 1 #g"  $FILE > temp; mv temp $FIL
 sed -e "s#^SAVE_FORWARD.*#SAVE_FORWARD = .$SAVE_FORWARD. #g"  $FILE > temp; mv temp $FILE
 
 ##### forward simulation (data) #####
-./bin/xmeshfem2D
-#./bin/xmeshfem2D > OUTPUT_FILES/output_mesher.txt
+#./bin/xmeshfem2D
+./bin/xmeshfem2D > OUTPUT_FILES/output_mesher.txt
 
 if [ $isource -eq 1 ] ; then
     echo "mpirun -np $NPROC_SPECFEM ./bin/xspecfem2D"
 fi
-#mpirun -np $NPROC_SPECFEM ./bin/xspecfem2D > OUTPUT_FILES/output_forward.txt
-mpirun -np $NPROC_SPECFEM ./bin/xspecfem2D
+mpirun -np $NPROC_SPECFEM --oversubscribe ./bin/xspecfem2D > OUTPUT_FILES/output_forward.txt
+#mpirun -np $NPROC_SPECFEM --oversubscribe ./bin/xspecfem2D
 ## copy and preprocessing of data 
 arr=$(echo $data_list | tr "," "\n")
 
